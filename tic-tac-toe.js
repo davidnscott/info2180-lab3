@@ -15,6 +15,13 @@ window.onload=function(){
 				turn = 'X'
 			};
 		});
+		board[x].addEventListener('mouseover', function(){
+			this.classList.add("hover");
+		});
+		board[x].addEventListener('mouseout', function(){
+			this.classList.remove("hover");
+		});
 			
-	};		
+	};
+	
 };
