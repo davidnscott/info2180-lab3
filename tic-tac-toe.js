@@ -19,21 +19,23 @@ window.onload=function start(){
 	for (let x=0; x<9;x++){
 		board[x].classList.add("square");
 		board[x].addEventListener('click', function(){
-			board[x].textContent = turn;
-			gameState[x] = turn;
-			for (y = 0; y < winPerms.length; y++){
-				if (gameState[winPerms[y][0]] == turn && gameState[winPerms[y][1]] == turn && gameState[winPerms[y][2]] == turn){
-					message.textContent = "Congratulations! " + turn + " is the winner";
-					message.classList.add("you-won");
+			if (gameState[x] == ""){
+				board[x].textContent = turn;
+				gameState[x] = turn;
+				for (y = 0; y < winPerms.length; y++){
+					if (gameState[winPerms[y][0]] == turn && gameState[winPerms[y][1]] == turn && gameState[winPerms[y][2]] == turn){
+						message.textContent = "Congratulations! " + turn + " is the winner";
+						message.classList.add("you-won");
+					}
 				}
+				if (turn == 'X'){
+					board[x].classList.add("X");
+					turn = 'O';
+				}else{
+					board[x].classList.add("O");
+					turn = 'X'
+				};
 			}
-			if (turn == 'X'){
-				board[x].classList.add("X");
-				turn = 'O';
-			}else{
-				board[x].classList.add("O");
-				turn = 'X'
-			};
 		});
 		board[x].addEventListener('mouseover', function(){
 			this.classList.add("hover");
